@@ -1,6 +1,6 @@
 =======  ====================================================================
 SEP      14
-Title    CrawlSpiter v2
+Title    CrawlSpider v2
 Author   Insophia Team
 Created  2010-01-22
 Updated  2010-02-04
@@ -54,7 +54,7 @@ Request Extractors
 
 Request Extractors takes response object and determines which requests follow.
 
-This is an enhancemente to ``LinkExtractors`` which returns urls (links),
+This is an enhancement to ``LinkExtractors`` which returns urls (links),
 Request Extractors return Request objects. 
 
 Request Processors

@@ -23,7 +23,7 @@ In this example, we'll show how to use `Firebug`_ to scrape data from the
 Project`_ used in the :ref:`tutorial <intro-tutorial>` but with a different
 face.
 
-.. _Firebug: http://getfirebug.com
+.. _Firebug: https://getfirebug.com/
 .. _Google Directory: http://directory.google.com/
 .. _Open Directory Project: http://www.dmoz.org
 
@@ -32,7 +32,7 @@ you to inspect the HTML code of the different page elements just by hovering
 your mouse over them. Otherwise you would have to search for the tags manually
 through the HTML body which can be a very tedious task.
 
-.. _Inspect Element: http://www.youtube.com/watch?v=-pT_pDe54aA
+.. _Inspect Element: https://www.youtube.com/watch?v=-pT_pDe54aA
 
 In the following screenshot you can see the `Inspect Element`_ tool in action.
 
@@ -69,20 +69,20 @@ those links. For example, the following one::
 
 So, based on that regular expression we can create the first crawling rule::
 
-    Rule(SgmlLinkExtractor(allow='directory.google.com/[A-Z][a-zA-Z_/]+$', ),
+    Rule(LinkExtractor(allow='directory.google.com/[A-Z][a-zA-Z_/]+$', ),
         'parse_category',
         follow=True,
     ),
 
-The :class:`~scrapy.contrib.spiders.Rule` object instructs
-:class:`~scrapy.contrib.spiders.CrawlSpider` based spiders how to follow the
+The :class:`~scrapy.spiders.Rule` object instructs
+:class:`~scrapy.spiders.CrawlSpider` based spiders how to follow the
 category links. ``parse_category`` will be a method of the spider which will
 process and extract data from those pages.
 
 This is how the spider would look so far::
 
-   from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-   from scrapy.contrib.spiders import CrawlSpider, Rule
+   from scrapy.linkextractors import LinkExtractor
+   from scrapy.spiders import CrawlSpider, Rule
 
    class GoogleDirectorySpider(CrawlSpider):
        name = 'directory.google.com'
@@ -90,7 +90,7 @@ This is how the spider would look so far::
        start_urls = ['http://directory.google.com/']
 
        rules = (
-           Rule(SgmlLinkExtractor(allow='directory\.google\.com/[A-Z][a-zA-Z_/]+$'),
+           Rule(LinkExtractor(allow='directory\.google\.com/[A-Z][a-zA-Z_/]+$'),
                'parse_category', follow=True,
            ),
        )
@@ -118,7 +118,7 @@ they work as we expect.
 
 As you can see, the page markup is not very descriptive: the elements don't
 contain ``id``, ``class`` or any attribute that clearly identifies them, so
-we''ll use the ranking bars as a reference point to select the data to extract
+we'll use the ranking bars as a reference point to select the data to extract
 when we construct our XPaths.
 
 After using FireBug, we can see that each link is inside a ``td`` tag, which is
@@ -164,4 +164,4 @@ elements.
 or tags which Therefer   in page HTML
 sources may on Firebug inspects the live DOM
 
-.. _has been shut down by Google: http://searchenginewatch.com/article/2096661/Google-Directory-Has-Been-Shut-Down
+.. _has been shut down by Google: https://searchenginewatch.com/sew/news/2096661/google-directory-shut
